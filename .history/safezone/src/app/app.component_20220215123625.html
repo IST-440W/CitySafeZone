@@ -66,6 +66,7 @@
   }
 
   .card-container {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 16px;
@@ -73,13 +74,15 @@
 
   /* edit btn  */
   .card {
-    all: unset;
+    /* all: unset; */
     border-radius: 15px;
     border: 1px solid #eee;
     background-color: #fafafa;
     height: 30px;
     margin: 0 8px 16px;
     padding: 18px;
+    /* display: right; */
+    /* flex-direction: row; */
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease-in-out;
@@ -110,6 +113,7 @@
   margin: 12px 6px;
   box-sizing: border-box;
   font-size: 25px;
+  
   }
 
   a,
@@ -197,18 +201,14 @@
   <br>
   <p>Type in an Address</p>
 
-  <div class="container">
+  <input type="text" name="address" value=""maxlength="100" />
 
-    <!-- textfield -->
-    <input type="text" name="address" value=""maxlength="100" />
-  
-    <!-- search button -->
-    <span class="card-container">
-      <a class="card" target="_blank" rel="noopener" href="https://www.google.com/maps">
-        <span>Search</span>
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
-    </span>
-
+  <div class="card-container">
+    <!-- put website in href to go to diff page -->
+   
+    <a class="card" target="_blank" rel="noopener" href="https://www.google.com/maps">
+      <span>Search</span>
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
   </div>
 
 

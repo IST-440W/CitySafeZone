@@ -126,7 +126,7 @@
   .card:visited,
   .card:hover {
     color: black;
-    font-size: 23px;
+    font-size: 26px;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
   }

@@ -79,6 +79,7 @@
   .card-container {
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 16px;
   }
 
   /* edit btn  */
@@ -88,7 +89,7 @@
     border: 1px solid #eee;
     background-color: #fafafa;
     height: 30px;
-    margin: 16px 20px 40px;
+    margin: 0 20px 30px;
     padding: 14px;
     justify-content: center;
     align-items: center;
@@ -118,7 +119,7 @@
   edit textfield
   input {
   padding: 14px 40px;
-  margin: 25px 10px; 
+  margin: 25px 20px; 
   box-sizing: border-box;
   }
 
@@ -126,15 +127,19 @@
   .card:visited,
   .card:hover {
     color: black;
-    font-size: 23px;
+    font-size: 26px;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
   }
 
   
+
   a:hover {
     color: #125699;
   }
+
+
+
 
   footer {
     margin-top: 8px;

@@ -41,16 +41,8 @@
 
   .toolbar img {
     margin: 0 19px;
-    justify-content: space-between;
   }
 
-  .navopt,
-  .navopt:visited,
-  .navopt:hover {
-    color: white;
-    font-size: 20px;
-    text-decoration: none;
-  }
   .content {
     display: flex;
     margin: 82px auto 32px;
@@ -121,14 +113,12 @@
   font-size: 26px;
   }
 
-  .card,
-  .card:visited,
-  .card:hover {
+  a,
+  a:visited,
+  a:hover {
     color: #1976d2;
     text-decoration: none;
   }
-
-  
 
   a:hover {
     color: #125699;
@@ -183,33 +173,15 @@
 <body>
   
 <!-- Toolbar -->
-<!-- <a class="toolbar" role="banner" href="#" style="color: white;">
+<a class="toolbar" role="banner" href="#" style="color: white;">
   <img
     width="40"
     alt="SafeZone Logo"
     src="https://media.discordapp.net/attachments/756264050614075442/942992535863828500/IMG_8358.png"
   />
   <span>SafeZone</span>
-</a> -->
-
-<div class="toolbar" role="banner">
-  <img
-    width="40"
-    alt="SafeZone Logo"
-    src="https://media.discordapp.net/attachments/756264050614075442/942992535863828500/IMG_8358.png"
-  />
-  <span>SafeZone</span>
-    <div class="spacer"></div>
-    <a class="navopt" aria-label="Home" target="_blank" rel="noopener" href="#" title="Home">
-      Home &nbsp;&nbsp;&nbsp;
-    </a>
-    <a class="navopt" aria-label="Data" target="_blank" rel="noopener" href="#" title="Data">
-      Data &nbsp;&nbsp;&nbsp;
-    </a>
-    <a class="navopt" aria-label="About" target="_blank" rel="noopener" href="#" title="About">
-      About &nbsp;&nbsp;
-    </a>
-</div>
+  
+</a>
 
 <div class="content" role="main">
 
@@ -226,17 +198,30 @@
 
   <div class="container">
 
-    <!-- textfield -->
+    <!-- textfield
     <input type="text" name="address" value=""maxlength="100" />
   
-    <!-- search button -->
+    search button
     <span class="card-container">
       <a class="card" target="_blank" rel="noopener" href="https://www.google.com/maps">
         <span>Search</span>
-      </a>
-    </span>
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    </a>
+    </span> -->
 
+    <!-- Search input -->
+<input id="searchInput" class="controls" type="text" placeholder="Enter a location">
 
+<!-- Google map -->
+<div id="map"></div>
+
+<!-- Display geolocation data -->
+<ul class="geo-data">
+    <li>Full Address: <span id="location"></span></li>
+    <li>Postal Code: <span id="postal_code"></span></li>
+    <li>Country: <span id="country"></span></li>
+    <li>Latitude: <span id="lat"></span></li>
+    <li>Longitude: <span id="lon"></span></li>
+</ul>
 
   </div>
 
@@ -260,6 +245,82 @@
 </div>
 
 </body>
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQRCDz9-XbNOA7fM1k15gq1CKWNNXb71w"></script>
+
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13
+        });
+        var input = document.getElementById('searchInput');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+    
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map,
+            anchorPoint: new google.maps.Point(0, -29)
+        });
+    
+        autocomplete.addListener('place_changed', function() {
+            infowindow.close();
+            marker.setVisible(false);
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return;
+            }
+      
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);
+            }
+            marker.setIcon(({
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(35, 35)
+            }));
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+        
+            var address = '';
+            if (place.address_components) {
+                address = [
+                  (place.address_components[0] && place.address_components[0].short_name || ''),
+                  (place.address_components[1] && place.address_components[1].short_name || ''),
+                  (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+        
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+          
+            // Location details
+            for (var i = 0; i < place.address_components.length; i++) {
+                if(place.address_components[i].types[0] == 'postal_code'){
+                    document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
+                }
+                if(place.address_components[i].types[0] == 'country'){
+                    document.getElementById('country').innerHTML = place.address_components[i].long_name;
+                }
+            }
+            document.getElementById('location').innerHTML = place.formatted_address;
+            document.getElementById('lat').innerHTML = place.geometry.location.lat();
+            document.getElementById('lon').innerHTML = place.geometry.location.lng();
+        });
+    }
+    </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDQRCDz9-XbNOA7fM1k15gq1CKWNNXb71w&callback=initMap" async defer></script>
 
 
 <router-outlet></router-outlet>

@@ -24,11 +24,10 @@
     </a>
 </div>
 
-<router-outlet></router-outlet>
 
-<!-- <div class="content" role="main">
-  
-  
+<div class="content" role="main">
+  <router-outlet></router-outlet>
+  <!-- Header -->
   <br>
   <br>
   <h2>Find Crime In Your Area</h2>
@@ -38,10 +37,10 @@
 
   <div class="container">
 
-   
+    <!-- textfield -->
     <input type="text" name="address" value=""maxlength="100" />
   
-    
+    <!-- search button -->
     <span class="card-container">
       <a class="card" target="_blank" rel="noopener" href="https://www.google.com/maps">
         <span>Search</span>
@@ -51,33 +50,9 @@
 
 
   </div>
-</div> -->
 
-<!-- <div class="container-fluid"> -->
-  <!-- <div class="row"> -->
-    <!-- <div class="col"> -->
-      <!-- <h1 class="display-4">My Map</h1> -->
-    <!-- </div> -->
-  <!-- </div> -->
-  <!-- <div class="row mb-2"> -->
-    <!-- <div class="col"> -->
-      <br>
-      <br>
-      <br>
-      <br>
-      <input class="form-control" id="search" type="text" placeholder="Search for a city" />
-    <!-- </div> -->
-  <!-- </div> -->
-  <!-- <div class="row"> -->
-    <!-- <div class="col"> -->
-      <div id="map"></div>
-    <!-- </div> -->
-  <!-- </div> -->
-<!-- </div> -->
-<br>
-<br>
-<br>
-<br>
+
+
   <!-- Footer -->
   <footer>
       Love SafeZone?&nbsp;
@@ -93,6 +68,8 @@
   </footer>
 
 
+</div>
+
 </body>
 
 
@@ -103,56 +80,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   
   <!-- Google Maps scripts. -->
-  <script type="text/javascript">
-    var map;
-
-function createMap () {
-  var options = {
-    center: { lat: 40.798214, lng: -77.859909 },
-    zoom: 10
-  };
-
-  map = new google.maps.Map(document.getElementById('map'), options);
-
-  var input = document.getElementById('search');
-  var searchBox = new google.maps.places.SearchBox(input);
-
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
-  });
-
-  var markers = [];
-  
-  searchBox.addListener('places_changed', function () {
-    var places = searchBox.getPlaces();
-
-    if (places.length == 0)
-      return;
-
-    markers.forEach(function (m) { m.setMap(null); });
-    markers = [];
-
-    var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(p) {
-      if (!p.geometry)
-        return;
-
-      markers.push(new google.maps.Marker({
-        map: map,
-        title: p.name,
-        position: p.geometry.location
-      }));
-
-      if (p.geometry.viewport)
-        bounds.union(p.geometry.viewport);
-      else
-        bounds.extend(p.geometry.location);
-    });
-    
-    map.fitBounds(bounds);
-  });
-}  
-  </script>
+  <script type="text/javascript" src="app.component.ts"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu88eUfs4emG-_VpSl-6BJA7p6mD4mVoE&callback=createMap&libraries=places" async defer></script>
 
 

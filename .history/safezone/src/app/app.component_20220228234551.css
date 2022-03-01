@@ -131,13 +131,18 @@
     text-decoration: none;
   }
 
+  .card,
+  .card:visited,
+  .card:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
   
 
   a:hover {
     color: #125699;
   }
-
-
 
 
   footer {

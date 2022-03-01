@@ -137,7 +137,10 @@
     color: #125699;
   }
 
-
+  .map{
+      border-width: 1px;
+      border: #0b5394;
+  }
 
 
   footer {

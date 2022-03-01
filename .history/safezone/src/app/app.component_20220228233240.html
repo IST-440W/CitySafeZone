@@ -1,0 +1,80 @@
+<head>
+  <link rel="stylesheet" href="app.component.css">
+</head>
+
+<body>
+  
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="SafeZone Logo"
+    src="https://media.discordapp.net/attachments/756264050614075442/942992535863828500/IMG_8358.png"
+  />
+  <span>SafeZone</span>
+    <div class="spacer"></div>
+    <a class="navopt" aria-label="Home" href="#home" routerLink="/" title="Home">
+      Home &nbsp;&nbsp;&nbsp;
+    </a>
+    <a class="navopt" aria-label="Data" href="#data" routerLink="/data" title="Data">
+      Data &nbsp;&nbsp;&nbsp;
+    </a>
+    <a class="navopt" aria-label="About Us" href="#aboutus" routerLink="/aboutus" title="About Us">
+      About Us &nbsp;&nbsp;
+    </a>
+</div>
+
+
+<div class="content" role="main">
+  <router-outlet></router-outlet>
+  <!-- Header -->
+  <br>
+  <br>
+  <h2>Find Crime In Your Area</h2>
+  <br>
+  <br>
+  <p>Type in an Address</p>
+
+  <div class="container">
+
+    <!-- textfield -->
+    <input type="text" name="address" value=""maxlength="100" />
+  
+    <!-- search button -->
+    <span class="card-container">
+      <a class="card" target="_blank" rel="noopener" href="https://www.google.com/maps">
+        <span>Search</span>
+      </a>
+    </span>
+
+
+
+  </div>
+
+
+
+  <!-- Footer -->
+  <footer>
+      Love SafeZone?&nbsp;
+      <a href="https://github.com/IST-440W/CitySafeZone" target="_blank" rel="noopener"> Give our repo a star.&nbsp;
+        <div class="github-star-badge">
+            <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          Star
+        </div>
+      </a>
+      <a href="https://github.com/IST-440W/CitySafeZone" target="_blank" rel="noopener">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </a>
+  </footer>
+
+
+</div>
+
+</body>
+
+<script type="text/javascript" src="app.component.ts">
+  alert("This alert box was called with the onload event");
+</script>
+
+
+

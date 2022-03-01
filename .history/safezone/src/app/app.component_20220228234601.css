@@ -124,6 +124,13 @@
   font-size: 26px;
   }
 
+  .input,
+  .input:visited,
+  .input:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
   .card,
   .card:visited,
   .card:hover {
@@ -136,8 +143,6 @@
   a:hover {
     color: #125699;
   }
-
-
 
 
   footer {

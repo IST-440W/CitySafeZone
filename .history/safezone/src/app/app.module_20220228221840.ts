@@ -11,8 +11,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    DataComponent,
-    AboutusComponent
+    DataComponent
   ],
   imports: [
     BrowserModule,

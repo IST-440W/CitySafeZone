@@ -7,7 +7,6 @@ import { AboutusComponent } from "./aboutus/aboutus.component";
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "data", component: DataComponent },
-  { path: "aboutus", component: AboutusComponent },
 ];
   
 @NgModule({

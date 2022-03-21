@@ -119,7 +119,7 @@
   input {
   padding: 14px 40px;
   margin: 25px 10px; 
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   }
 
   .card,

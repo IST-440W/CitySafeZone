@@ -11,7 +11,7 @@
     alt="SafeZone Logo"
     src="https://media.discordapp.net/attachments/756264050614075442/942992535863828500/IMG_8358.png"
   />
-  <span>City SafeZone</span>
+  <span>SafeZone</span>
     <div class="spacer"></div>
     <a class="navopt" aria-label="Home" href="#home" routerLink="/" title="Home">
       Home &nbsp;&nbsp;&nbsp;
@@ -26,7 +26,6 @@
 
 <router-outlet></router-outlet>
 
-<br>
 <br>
 <br>
 <br>
@@ -117,81 +116,6 @@ function createMap () {
     
     map.fitBounds(bounds);
   });
-
-  function addMarker(coords){
-    var marker = new google.maps.Marker({
-        position: coords,
-        map: map,
-    });
-}
-
-//call marker function
-addMarker({lat:39.88417213
-    ,lng:-75.23078211
-});
-addMarker({lat:40.04434503
-    ,lng:-75.14358678
-});
-addMarker({lat:40.00588048
-    ,lng:-75.09618815
-});
-addMarker({lat:40.00609204
-    ,lng:-75.21231869
-});
-addMarker({lat:40.01406224
-    ,lng:-75.06759487
-});
-addMarker({lat:40.04987127
-    ,lng:-75.06695945
-});
-addMarker({lat:39.95716628
-    ,lng:-75.20936464
-});
-addMarker({lat:39.92439906
-    ,lng:-75.14615466
-});
-addMarker({lat:39.9598555
-    ,lng:-75.14770276
-});
-addMarker({lat:40.05080882
-    ,lng:-75.05242103
-});
-addMarker({lat:39.88352005
-    ,lng:-75.23233709
-});
-addMarker({lat:39.95435127
-    ,lng:-75.2014564
-});
-addMarker({lat:39.88388114
-    ,lng:-75.23070645
-});
-addMarker({lat:39.88388114
-    ,lng:-75.23070645
-});
-addMarker({lat:28.41971521
-    ,lng:-81.58137853
-});
-addMarker({lat:40.09595774
-    ,lng:-74.97509651
-});
-addMarker({lat:39.98316762
-    ,lng:-75.1782643
-});
-addMarker({lat:39.88388114
-    ,lng:-75.23070645
-});
-addMarker({lat:39.9517023
-    ,lng:-75.15825188
-});
-addMarker({lat:39.96128425
-    ,lng:-75.14661747
-});
-addMarker({lat:39.9517023
-    ,lng:-75.15825188
-});
-addMarker({lat:39.94693215
-    ,lng:-75.16676269
-});
 }  
 </script>
 

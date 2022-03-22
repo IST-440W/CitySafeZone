@@ -71,7 +71,13 @@
 <!-- Google Maps scripts. -->
  <script type="text/javascript">
   var map;
-
+  var input = document.getElementById("myInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("myBtn").click();
+  }
+});
 
 function createMap () {
   var options = {
@@ -82,12 +88,6 @@ function createMap () {
   map = new google.maps.Map(document.getElementById('map'), options);
 
   var input = document.getElementById('search');
-  input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   alert("That location cannot be found. Please try a different location.");
-  }
-});
   var searchBox = new google.maps.places.SearchBox(input);
 
   map.addListener('bounds_changed', function() {

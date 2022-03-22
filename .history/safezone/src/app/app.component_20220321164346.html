@@ -72,7 +72,6 @@
  <script type="text/javascript">
   var map;
 
-
 function createMap () {
   var options = {
     center: { lat: 40.798214, lng: -77.859909 },
@@ -82,12 +81,6 @@ function createMap () {
   map = new google.maps.Map(document.getElementById('map'), options);
 
   var input = document.getElementById('search');
-  input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   alert("That location cannot be found. Please try a different location.");
-  }
-});
   var searchBox = new google.maps.places.SearchBox(input);
 
   map.addListener('bounds_changed', function() {
@@ -101,6 +94,8 @@ function createMap () {
 
     if (places.length == 0)
       return;
+
+    
 
     markers.forEach(function (m) { m.setMap(null); });
     markers = [];

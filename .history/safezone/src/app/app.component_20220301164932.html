@@ -11,7 +11,7 @@
     alt="SafeZone Logo"
     src="https://media.discordapp.net/attachments/756264050614075442/942992535863828500/IMG_8358.png"
   />
-  <span>City SafeZone</span>
+  <span>SafeZone</span>
     <div class="spacer"></div>
     <a class="navopt" aria-label="Home" href="#home" routerLink="/" title="Home">
       Home &nbsp;&nbsp;&nbsp;
@@ -19,13 +19,14 @@
     <a class="navopt" aria-label="Data" href="#data" routerLink="/data" title="Data">
       Data &nbsp;&nbsp;&nbsp;
     </a>
-    <!-- <a class="navopt" aria-label="About Us" href="#aboutus" routerLink="/aboutus" title="About Us">
+    <a class="navopt" aria-label="About Us" href="#aboutus" routerLink="/aboutus" title="About Us">
       About Us &nbsp;&nbsp;
-    </a> -->
+    </a>
 </div>
 
 <router-outlet></router-outlet>
 
+<br>
 <br>
 <br>
 <br>
@@ -70,7 +71,6 @@
  <script type="text/javascript">
   var map;
 
-
 function createMap () {
   var options = {
     center: { lat: 40.798214, lng: -77.859909 },
@@ -80,12 +80,6 @@ function createMap () {
   map = new google.maps.Map(document.getElementById('map'), options);
 
   var input = document.getElementById('search');
-  input.addEventListener("keyup", function(event) {
-if (event.keyCode === 13) {
-event.preventDefault();
-alert("That location cannot be found. Please try a different location.");
-}
-});
   var searchBox = new google.maps.places.SearchBox(input);
 
   map.addListener('bounds_changed', function() {
@@ -122,134 +116,11 @@ alert("That location cannot be found. Please try a different location.");
     
     map.fitBounds(bounds);
   });
-
-  function addMarker(coords){
-    var marker = new google.maps.Marker({
-        position: coords.location,
-        map: map,
-    });
-    //info window
-const detailWindow = new google.maps.InfoWindow({
-  content: coords.content
-});
-
-marker.addListener("click", () =>{
-  detailWindow.open(map, marker);
-})
-
-marker.addListener("closeclick", () =>{
-  detailWindow.open(map, marker);
-})
-
-}
-//call marker function
-addMarker({location:{lat:41.96648921
-    ,lng:-87.7218297
-}, content: '<h2>Theft, 12/6/2021 15:40, No Arrest</h2>'
-
-  });
-
-  addMarker({location:{lat:41.75609493
-    ,lng:-87.6446594
-}, content: '<h2>Assault, 12/6/2021 1:00, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.77844799
-    ,lng:-87.74076299
-}, content: '<h2>Assault, 12/6/2021 14:00, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.93158252
-    ,lng:-87.74274717
-}, content: '<h2>Theft, 12/6/2021 17:17, Arrest Made</h2>'
-  });
-
-  addMarker({location:{lat:41.74907718
-    ,lng:-87.62738248
-}, content: '<h2>Assault, 12/6/2021 6:12, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.87434843
-    ,lng:-87.678912
-}, content: '<h2>Theft, 12/6/2021 14:00, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.78589399
-    ,lng:-87.69480184
-}, content: '<h2>Theft, 12/6/2021 10:26, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.7992697
-    ,lng:-87.76981935
-}, content: '<h2>Theft, 12/6/2021 10:26, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.98072201
-    ,lng:-87.65793401
-}, content: '<h2>Theft, 12/5/2021 22:00, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.80814581
-    ,lng:-87.70245975
-}, content: '<h2>Assault, 12/2/2021 22:00, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.90021003
-    ,lng:-87.69546779
-}, content: '<h2>Theft</h2>'
-  });
-
-  addMarker({location:{lat:41.88990668
-    ,lng:-87.62410051
-}, content: '<h2>Theft, 12/16/2021 12:25, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.89339181
-    ,lng:-87.62098778
-}, content: '<h2>Theft, 12/6/2021 13:00, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.93158049
-    ,lng:-87.74288684
-}, content: '<h2>Theft, </h2>'
-  });
-
-  addMarker({location:{lat:41.78308167
-    ,lng:-87.64730027
-}, content: '<h2>Assault, 12/16/2021 15:33, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.95101662
-    ,lng:-87.70793835
-}, content: '<h2>Theft, 12/16/2021 15:05, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.75131456
-    ,lng:-87.66467234
-}, content: '<h2>Theft, 12/16/2021 10:50, Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.77980253
-    ,lng:-87.70894112
-}, content: '<h2>Theft, 12/16/2021 15:00, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.97768507
-    ,lng:-87.69304761
-}, content: '<h2>Theft, 12/16/2021 23:04, No Arrest</h2>'
-  });
-
-  addMarker({location:{lat:41.87836624
-    ,lng:-87.76338199
-}, content: '<h2>Theft, 12/13/2021 13:00, No Arrest</h2>'
-  });
-  
-}
-
-  </script>
+}  
+</script>
 
 
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=createMap&libraries=places" async defer></script> -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu88eUfs4emG-_VpSl-6BJA7p6mD4mVoE&callback=createMap&libraries=places" async defer></script>
-
 
 

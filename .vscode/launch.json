@@ -7,8 +7,14 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
+<<<<<<< HEAD
             "name": "Open app.component.html",
             "file": "c:\\Users\\Andy\\Documents\\GitHub\\CitySafeZone\\safezone\\src\\app\\app.component.html"
+=======
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+>>>>>>> 1438c9b6afc79ad73c3a93e0e83d8ac53581e36f
         }
     ]
 }
